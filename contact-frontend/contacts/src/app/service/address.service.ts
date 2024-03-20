@@ -20,7 +20,11 @@ export class AddressService {
     return this.http.delete(BASE_URL+"/"+id)
   }
 
-  getAllAddressesByContactId(id:Number):Observable<Array<AddressListItemModel>>{
+  getAllAddressesByContactId(id:number):Observable<Array<AddressListItemModel>>{
     return this.http.get<Array<AddressListItemModel>>(BASE_URL+"/"+id)
 }
+
+  getAddressById(addressId: number) {
+    return this.http.get<AddressListItemModel>(BASE_URL+"/forUpdate/"+addressId)
+  }
 }

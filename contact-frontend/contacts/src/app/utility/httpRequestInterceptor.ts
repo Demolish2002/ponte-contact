@@ -12,7 +12,7 @@ export class HttpRequestInterceptor implements HttpInterceptor {
         const requestWithHeader = req.clone({
                                                 headers        : req.headers.set('X-Requested-With', 'XMLHttpRequest'),
                                                 withCredentials: true,
-                                            });
+          });
 
         return next.handle(requestWithHeader);
     }

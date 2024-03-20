@@ -1,11 +1,16 @@
-package com.example.pontecontacts.domain;
+package com.example.pontecontact.domain;
 
+import com.example.pontecontact.dto.incoming.ContactCreationCommand;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
-
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "contact")
 public class Contact {
@@ -13,9 +18,10 @@ public class Contact {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToMany(mappedBy = "contact")
-    private List<Address> addressList;
+    private List<Address> addressList=new ArrayList<>();
+
     @ElementCollection
-    private List<String> phoneNumbers;
+    private List<String> phoneNumbers=new ArrayList<>();
 
     private String name;
 
@@ -26,9 +32,19 @@ public class Contact {
     private String tajNumber;
 
     private String taxIdentification;
-    @Email
+
     private String email;
 
     @ManyToOne
     private User user;
+
+    public Contact(ContactCreationCommand command) {
+        this.phoneNumbers=command.getPhoneNumbers();
+        this.name = command.getName();
+        this.dateOfBirth = command.getDateOfBirth();
+        this.mothersMaidenName = command.getMothersMaidenName();
+        this.tajNumber = command.getTajNumber();
+        this.taxIdentification = command.getTaxIdentification();
+        this.email = command.getEmail();
+    }
 }

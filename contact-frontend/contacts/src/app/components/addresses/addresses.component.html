@@ -1,1 +1,45 @@
-<p>addresses works!</p>
+<div class="container-fluid">
+  <table class="table">
+
+    <thead>
+    <tr>
+      <th scope="col">Address ID</th>
+      <th scope="col">Postal code</th>
+      <th scope="col">City</th>
+      <th scope="col">House number</th>
+      <th scope="col">Street</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let address of addresses">
+
+      <td>{{address.addressId}}</td>
+      <td>{{address.postalCode}}</td>
+      <td>{{address.city}}</td>
+      <td>{{address.houseNumber}}</td>
+      <td>{{address.street}}</td>
+
+
+      <td>
+        <button (click)="deleteAddress(address.addressId)" class="btn btn-danger">Delete</button>
+      </td>
+      <td>
+        <button (click)="editAddress(address.addressId)" class="btn btn-info">Edit</button>
+      </td>
+
+    </tr>
+
+    </tbody>
+  </table>
+  <div class="text-center">
+    <button type="submit" (click)="createNewAddress(contactId)" class="btn btn-success text-center"
+            data-bs-target="#verifyModal"
+            data-bs-toggle="modal">Add new address
+    </button>
+  </div>
+  </div>

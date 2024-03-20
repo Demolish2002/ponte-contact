@@ -1,1 +1,64 @@
-<p>register-form works!</p>
+<div class="custom-position"></div>
+<div class="container-fluid container mb-4">
+  <h1 class="my-2 text-center">Registration</h1>
+  <hr class="hr"/>
+  <form [formGroup]="registerForm" class="mb-3 responsive-form" (ngSubmit)="submitRegisterForm()">
+    <div class="my-2">
+      <label for="username" class="form-label label"
+             [ngClass]="{'text-danger':(registerForm.get('username')?.invalid && registerForm.get('username')?.touched) || registerForm.get('username')?.errors?.['serverError']}"
+      >
+
+        Username:
+      </label>
+      <input
+        id="username"
+        formControlName="username"
+        placeholder="Please give your username"
+        class="form-control input"
+        type="text">
+      <small *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched && !registerForm.get('username')?.errors?.['serverError']" class="text-danger">
+        You must give a username!
+      </small>
+      <small *ngIf="registerForm.get('username')?.errors?.['serverError']" class="text-danger">
+        {{registerForm.get('username')?.errors?.['serverError']}}
+      </small>
+
+    </div>
+
+
+    <div class="my-2">
+      <label for="password" class="form-label label"
+             [ngClass]="{'text-danger':(registerForm.get('password')?.invalid && registerForm.get('password')?.touched) || registerForm.get('password')?.errors?.['serverError']}">
+
+        Password:
+      </label>
+      <input
+        id="password"
+        formControlName="password"
+        placeholder="Please give a password"
+        class="form-control input"
+        type="password">
+      <small *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched && !registerForm.get('password')?.errors?.['serverError']" class="text-danger">
+        Your password must contain at least 8 letters and have a capital letter plus a number!
+      </small>
+      <small *ngIf="registerForm.get('password')?.errors?.['serverError']" class="text-danger">
+        {{registerForm.get('password')?.errors?.['serverError']}}
+      </small>
+
+    </div>
+
+
+
+
+
+
+
+    <div class="text-center">
+      <button type="submit" [disabled]="registerForm.invalid" class="button btn"  data-bs-target="#verifyModal"  data-bs-toggle="modal">Submit</button>
+    </div>
+  </form>
+
+
+
+</div>
+

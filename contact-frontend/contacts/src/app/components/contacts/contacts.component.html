@@ -1,46 +1,41 @@
-<table class="table">
-  <h1>My Contacts</h1>
-  <thead>
-  <tr>
-    <th scope="col">Name</th>
-    <th scope="col">Date of birth</th>
-    <th scope="col">Mothers maiden name</th>
-    <th scope="col">Taj number</th>
-    <th scope="col">Tax identification number</th>
-    <th scope="col">Email</th>
-    <th scope="col">Addresses</th>
-    <th scope="col">Phone numbers</th>
-    <th scope="col"></th>
+<div class="container-fluid"><h1>My Contacts</h1>
+
+  <table class="table">
+
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Date of birth</th>
+      <th scope="col">Mothers maiden name</th>
+      <th scope="col">Taj number</th>
+      <th scope="col">Tax identification number</th>
+      <th scope="col">Email</th>
+      <th scope="col">Addresses</th>
+      <th scope="col">Phone numbers</th>
+      <th scope="col"></th>
 
 
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let contact of Contacts">
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let contact of Contacts">
 
-    <td>{{contact.name}}</td>
-    <td>{{contact.dateOfBirth}}</td>
-    <td>{{contact.mothersMaidenName}}</td>
-    <td>{{contact.tajNumber}}</td>
-    <td>{{contact.taxIdentification}}</td>
-    <td>{{contact.email}}</td>
-    <td>Go to Address</td>
-    <td>Go to Phone numbers</td>
-    <td>
-      <button (click)="deleteContact(contact.id)" class="btn btn-danger">Delete</button></td>
-    <td>
-      <button class="btn btn-info">Edit</button></td>
-  </tr>
-  <tr>
-    <th scope="row">2</th>
-    <td>Jacob</td>
-    <td>Thornton</td>
-    <td>@fat</td>
-  </tr>
-  <tr>
-    <th scope="row">3</th>
-    <td colspan="2">Larry the Bird</td>
-    <td>@twitter</td>
-  </tr>
-  </tbody>
-</table>
+      <td>{{contact.name}}</td>
+      <td>{{contact.dateOfBirth}}</td>
+      <td>{{contact.mothersMaidenName}}</td>
+      <td>{{contact.tajNumber}}</td>
+      <td>{{contact.taxIdentification}}</td>
+      <td>{{contact.email}}</td>
+      <td (click)="goToAddress(contact.id)">Go to Address</td>
+      <td (click)="goToPhoneNumber(contact.id)">Go to Phone numbers</td>
+      <td>
+        <button (click)="deleteContact(contact.id)" class="btn btn-danger">Delete</button>
+      </td>
+      <td>
+        <button (click)="updateContact(contact.id)" class="btn btn-info">Edit</button>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>

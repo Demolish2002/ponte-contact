@@ -1,1 +1,91 @@
-<p>address-form works!</p>
+<div class="container-fluid container mb-4">
+  <h1 class="my-2 text-center">Address</h1>
+  <hr class="hr"/>
+  <form [formGroup]="adressForm" class="mb-3 responsive-form" (ngSubmit)="submitaddressForm()">
+
+    <div class="my-2">
+      <label for="postalCode" class="form-label label"
+             [ngClass]="{'text-danger':(adressForm.get('postalCode')?.invalid && adressForm.get('postalCode')?.touched) || adressForm.get('postalCode')?.errors?.['serverError']}">
+
+        Postal code:
+      </label>
+      <input
+        id="postalCode"
+        formControlName="postalCode"
+        placeholder="Please give a postalCode"
+        class="form-control input"
+        type="number">
+      <small *ngIf="adressForm.get('postalCode')?.invalid && adressForm.get('postalCode')?.touched && !adressForm.get('postalCode')?.errors?.['serverError']" class="text-danger">
+        You must give a postal code!
+      </small>
+      <small *ngIf="adressForm.get('postalCode')?.errors?.['serverError']" class="text-danger">
+        {{adressForm.get('postalCode')?.errors?.['serverError']}}
+      </small>
+
+    </div>
+    <div class="my-2">
+      <label for="city" class="form-label label"
+             [ngClass]="{'text-danger':(adressForm.get('city')?.invalid && adressForm.get('city')?.touched) || adressForm.get('city')?.errors?.['serverError']}">
+
+        City:
+      </label>
+      <input
+        id="city"
+        formControlName="city"
+        placeholder="Please give a city"
+        class="form-control input"
+        type="text">
+      <small *ngIf="adressForm.get('city')?.invalid && adressForm.get('city')?.touched && !adressForm.get('city')?.errors?.['serverError']" class="text-danger">
+        You must give a city!
+      </small>
+      <small *ngIf="adressForm.get('city')?.errors?.['serverError']" class="text-danger">
+        {{adressForm.get('city')?.errors?.['serverError']}}
+      </small>
+
+    </div>
+    <div class="my-2">
+      <label for="street" class="form-label label"
+             [ngClass]="{'text-danger':(adressForm.get('street')?.invalid && adressForm.get('street')?.touched) || adressForm.get('street')?.errors?.['serverError']}">
+
+        Street:
+      </label>
+      <input
+        id="street"
+        formControlName="street"
+        placeholder="Please give a street"
+        class="form-control input"
+        type="text">
+      <small *ngIf="adressForm.get('street')?.invalid && adressForm.get('street')?.touched && !adressForm.get('street')?.errors?.['serverError']" class="text-danger">
+        You must give a street!
+      </small>
+      <small *ngIf="adressForm.get('street')?.errors?.['serverError']" class="text-danger">
+        {{adressForm.get('street')?.errors?.['serverError']}}
+      </small>
+
+    </div>
+    <div class="my-2">
+      <label for="houseNumber" class="form-label label"
+             [ngClass]="{'text-danger':(adressForm.get('houseNumber')?.invalid && adressForm.get('houseNumber')?.touched) || adressForm.get('houseNumber')?.errors?.['serverError']}">
+
+        House number:
+      </label>
+      <input
+        id="houseNumber"
+        formControlName="houseNumber"
+        placeholder="Please give a houseNumber"
+        class="form-control input"
+        type="text">
+      <small *ngIf="adressForm.get('houseNumber')?.invalid && adressForm.get('houseNumber')?.touched && !adressForm.get('houseNumber')?.errors?.['serverError']" class="text-danger">
+        You must give a house number!
+      </small>
+      <small *ngIf="adressForm.get('houseNumber')?.errors?.['serverError']" class="text-danger">
+        {{adressForm.get('houseNumber')?.errors?.['serverError']}}
+      </small>
+
+    </div>
+
+    <div class="text-center">
+      <button type="submit" [disabled]="adressForm.invalid" class="button btn"  data-bs-target="#verifyModal"  data-bs-toggle="modal">Submit</button>
+    </div>
+    </form>
+  </div>

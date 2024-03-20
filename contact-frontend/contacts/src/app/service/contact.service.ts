@@ -10,7 +10,7 @@ export class ContactService {
 
   constructor(private http:HttpClient) { }
   createNewContact(data:ContactFormDataModel){
-    return this.http.post(BASE_URL,data)
+    return this.http.post<number>(BASE_URL,data)
   }
 
   deleteContactInfosById(id:number){
@@ -19,11 +19,18 @@ export class ContactService {
   getAllContactsByUser(){
     return this.http.get<Array<ContactListItemModel>>(BASE_URL)
   }
-  deleteEmailByContactAndId(contactId:number,phoneNumberId:number){
+  deletePhoneNumberByContactAndId(contactId:number,phoneNumberId:number){
     return this.http.delete(BASE_URL+"/"+contactId+"/phoneNumber/"+phoneNumberId)
   }
   addPhoneNumberByContactId(id:number,phoneNumber:string){
     return this.http.post(BASE_URL+"/"+id+"/phoneNumber",phoneNumber)
   }
 
+  getPhoneNumbersByContact(contactId: number) {
+    return this.http.get<ContactListItemModel>(BASE_URL+"/"+contactId)
+  }
+
+  updateContactById(contactId: number, data: ContactFormDataModel) {
+    return this.http.put(BASE_URL+"/"+contactId,data)
+  }
 }

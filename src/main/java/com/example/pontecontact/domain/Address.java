@@ -1,7 +1,12 @@
-package com.example.pontecontacts.domain;
+package com.example.pontecontact.domain;
 
+import com.example.pontecontact.dto.incoming.AddressCreationCommand;
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "address")
 public class Address {
@@ -16,4 +21,13 @@ public class Address {
     private String houseNumber;
     @ManyToOne
     private Contact contact;
+
+    public Address(AddressCreationCommand command) {
+        this.postalCode = command.getPostalCode();
+        this.city = command.getCity();
+        this.street = command.getStreet();
+        this.houseNumber = command.getHouseNumber();
+    }
+
+
 }

@@ -1,6 +1,6 @@
 export interface ContactListItemModel{
   id:number
-  phoneNumbers:Array<String>
+  phoneNumbers:Array<string>
   name:string
   dateOfBirth:string
   mothersMaidenName:string

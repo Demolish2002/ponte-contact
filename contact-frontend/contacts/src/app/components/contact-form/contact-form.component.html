@@ -1,1 +1,150 @@
-<p>contact-form works!</p>
+<div class="container-fluid container mb-4">
+  <h1 class="my-2 text-center">New contact</h1>
+  <hr class="hr"/>
+  <form [formGroup]="contactForm" class="mb-3 responsive-form" (ngSubmit)="submitContactForm()">
+    <div class="my-2">
+      <label for="name" class="form-label label"
+             [ngClass]="{'text-danger':(contactForm.get('name')?.invalid && contactForm.get('name')?.touched) || contactForm.get('name')?.errors?.['serverError']}"
+      >
+
+        Your name:
+      </label>
+      <input
+        id="name"
+        formControlName="name"
+        placeholder="Please give your  name"
+        class="form-control input"
+        type="text">
+      <small *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched && !contactForm.get('name')?.errors?.['serverError']" class="text-danger">
+        You must give a Name!
+      </small>
+      <small *ngIf="contactForm.get('name')?.errors?.['serverError']" class="text-danger">
+        {{contactForm.get('name')?.errors?.['serverError']}}
+      </small>
+
+    </div>
+    <div class="my-2">
+      <label for="mothersMaidenName" class="form-label label"
+             [ngClass]="{'text-danger':(contactForm.get('mothersMaidenName')?.invalid && contactForm.get('mothersMaidenName')?.touched) || contactForm.get('mothersMaidenName')?.errors?.['serverError']}">
+
+        Mothers maiden name:
+      </label>
+      <input
+        id="mothersMaidenName"
+        formControlName="mothersMaidenName"
+        placeholder="Please give your mothers maiden name"
+        class="form-control input"
+        type="text">
+      <small *ngIf="contactForm.get('mothersMaidenName')?.invalid && contactForm.get('mothersMaidenName')?.touched && !contactForm.get('mothersMaidenName')?.errors?.['serverError']" class="text-danger">
+        You must give a name!
+      </small>
+      <small *ngIf="contactForm.get('mothersMaidenName')?.errors?.['serverError']" class="text-danger">
+        {{contactForm.get('mothersMaidenName')?.errors?.['serverError']}}
+      </small>
+
+    </div>
+    <div class="my-2">
+      <label for="email" class="form-label label"
+             [ngClass]="{'text-danger':(contactForm.get('email')?.invalid && contactForm.get('email')?.touched) || contactForm.get('email')?.errors?.['serverError']}">
+
+        Email:
+      </label>
+      <input
+        id="email"
+        formControlName="email"
+        placeholder="Please give your email"
+        class="form-control input"
+        type="email">
+      <small *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched && !contactForm.get('email')?.errors?.['serverError']" class="text-danger">
+        You must give an email!
+      </small>
+      <small *ngIf="contactForm.get('email')?.errors?.['serverError']" class="text-danger">
+        {{contactForm.get('email')?.errors?.['serverError']}}
+      </small>
+
+    </div>
+    <div class="my-2">
+      <label for="tajNumber" class="form-label label"
+             [ngClass]="{'text-danger':(contactForm.get('tajNumber')?.invalid && contactForm.get('tajNumber')?.touched) || contactForm.get('tajNumber')?.errors?.['serverError']}">
+
+        Taj number:
+      </label>
+      <input
+        id="tajNumber"
+        formControlName="tajNumber"
+        placeholder="Please give an taj number"
+        class="form-control input"
+        type="text">
+      <small *ngIf="contactForm.get('tajNumber')?.invalid && contactForm.get('tajNumber')?.touched && !contactForm.get('tajNumber')?.errors?.['serverError']" class="text-danger">
+        You must give a taj number!
+      </small>
+      <small *ngIf="contactForm.get('tajNumber')?.errors?.['serverError']" class="text-danger">
+        {{contactForm.get('tajNumber')?.errors?.['serverError']}}
+      </small>
+
+    </div>
+    <div class="my-2">
+      <label for="taxIdentification" class="form-label label"
+             [ngClass]="{'text-danger':(contactForm.get('taxIdentification')?.invalid && contactForm.get('taxIdentification')?.touched) || contactForm.get('taxIdentification')?.errors?.['serverError']}">
+
+        Tax identification number:
+      </label>
+      <input
+        id="taxIdentification"
+        formControlName="taxIdentification"
+        placeholder="Please give your tax identification number"
+        class="form-control input"
+        type="text">
+      <small *ngIf="contactForm.get('taxIdentification')?.invalid && contactForm.get('taxIdentification')?.touched && !contactForm.get('taxIdentification')?.errors?.['serverError']" class="text-danger">
+        You must give a tax identification number!
+      </small>
+      <small *ngIf="contactForm.get('taxIdentification')?.errors?.['serverError']" class="text-danger">
+        {{contactForm.get('taxIdentification')?.errors?.['serverError']}}
+      </small>
+
+    </div>
+    <div class="my-2">
+      <label for="dateOfBirth" class="form-label label"
+             [ngClass]="{'text-danger':(contactForm.get('dateOfBirth')?.invalid && contactForm.get('dateOfBirth')?.touched) || contactForm.get('dateOfBirth')?.errors?.['serverError']}">
+
+        Date of birth:
+      </label>
+      <input
+        id="dateOfBirth"
+        formControlName="dateOfBirth"
+        placeholder="Please give your date of birth"
+        class="form-control input"
+        type="date">
+      <small *ngIf="contactForm.get('dateOfBirth')?.invalid && contactForm.get('dateOfBirth')?.touched && !contactForm.get('dateOfBirth')?.errors?.['serverError']" class="text-danger">
+        You must give a date!
+      </small>
+      <small *ngIf="contactForm.get('dateOfBirth')?.errors?.['serverError']" class="text-danger">
+        {{contactForm.get('dateOfBirth')?.errors?.['serverError']}}
+      </small>
+      <div class="my-2">
+        <label for="phoneNumber" class="form-label label"
+               [ngClass]="{'text-danger':(contactForm.get('phoneNumber')?.invalid && contactForm.get('phoneNumber')?.touched) || contactForm.get('phoneNumber')?.errors?.['serverError']}">
+
+          Phone number:
+        </label>
+        <input
+          id="phoneNumber"
+          formControlName="phoneNumber"
+          placeholder="Please give a phone number"
+          class="form-control input"
+          type="text">
+        <small *ngIf="contactForm.get('phoneNumber')?.invalid && contactForm.get('phoneNumber')?.touched && !contactForm.get('phoneNumber')?.errors?.['serverError']" class="text-danger">
+
+        </small>
+        <small *ngIf="contactForm.get('phoneNumber')?.errors?.['serverError']" class="text-danger">
+          {{contactForm.get('phoneNumber')?.errors?.['serverError']}}
+        </small>
+    </div>
+
+    <div class="text-center">
+      <button type="submit" [disabled]="contactForm.invalid" class="button btn"  >Submit</button>
+    </div>
+      </div>
+</form>
+
+</div>

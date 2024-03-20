@@ -1,1 +1,67 @@
-<p>phonenumbers works!</p>
+<div class="container-fluid">
+  <table class="table">
+
+    <thead>
+    <tr>
+      <th scope="col">Contact name</th>
+      <th scope="col">Contact id</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let number of contact.phoneNumbers; let i = index">
+
+      <td>{{contact.name}}</td>
+      <td>{{contactId}}</td>
+      <td>{{number}}</td>
+
+      <td>
+        <button (click)="deletePhoneNumber(i)" class="btn btn-danger">Delete</button>
+      </td>
+
+    </tr>
+
+    </tbody>
+  </table>
+
+
+  <form [formGroup]="phoneNumber" class="mb-3 responsive-form" (ngSubmit)="submitPhoneNumberForm()">
+    <div class="my-2">
+      <label for="number" class="form-label label"
+             [ngClass]="{'text-danger':(phoneNumber.get('number')?.invalid && phoneNumber.get('number')?.touched) || phoneNumber.get('number')?.errors?.['serverError']}"
+      >
+
+        Add a new phone number:
+      </label>
+      <input
+        id="number"
+        formControlName="number"
+        placeholder="Please give your number"
+        class="form-control input"
+        type="text">
+      <small
+        *ngIf="phoneNumber.get('number')?.invalid && phoneNumber.get('number')?.touched && !phoneNumber.get('number')?.errors?.['serverError']"
+        class="text-danger">
+        You must give a number!
+      </small>
+      <small *ngIf="phoneNumber.get('number')?.errors?.['serverError']" class="text-danger">
+        {{phoneNumber.get('number')?.errors?.['serverError']}}
+      </small>
+
+    </div>
+
+
+    <div class="text-center">
+      <button type="submit " [disabled]="phoneNumber.invalid" class="btn-success btn" data-bs-target="#verifyModal"
+              data-bs-toggle="modal">Add
+      </button>
+    </div>
+  </form>
+</div>
