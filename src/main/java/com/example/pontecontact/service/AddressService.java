@@ -63,4 +63,5 @@ public class AddressService {
     public AddressListItem getAddressById(Long id) {
         return new AddressListItem(addressRepository.getById(id));
     }
+
 }

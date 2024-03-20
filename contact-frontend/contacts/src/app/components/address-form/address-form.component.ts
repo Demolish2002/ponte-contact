@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AddressService} from "../../service/address.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AddressFormDataModel} from "../../models/addressFormData.model";
+import {validationHandler} from "../../utility/validationHandler";
 
 
 @Component({
@@ -52,7 +53,10 @@ export class AddressFormComponent {
       }
       this.addressService.updateAddress(data,this.addressId).subscribe({next:value => {
           this.router.navigate(['/address-list',this.contactId])
-        }})
+        },error:err => {
+        validationHandler(err,this.adressForm)
+        }
+      })
     }else {
     let data:AddressFormDataModel={
       contactId:this.contactId,
@@ -63,7 +67,10 @@ export class AddressFormComponent {
     }
 
     this.addressService.createAddress(data).subscribe({
-      next:value => {this.router.navigate(['/address-list',this.contactId])}
+      next:value => {this.router.navigate(['/address-list',this.contactId])},
+      error:err => {
+        validationHandler(err,this.adressForm)
+      }
     })
     }
   }

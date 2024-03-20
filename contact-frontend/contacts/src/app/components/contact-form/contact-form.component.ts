@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ContactService} from "../../service/contact.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ContactFormDataModel} from "../../models/contactFormData.model";
+import {validationHandler} from "../../utility/validationHandler";
 
 @Component({
   selector: 'app-contact-form',
@@ -62,6 +63,9 @@ contactForm!:FormGroup
     this.contactService.updateContactById(this.contactId,data).subscribe({
       next:value=>{
         this.router.navigate(['/contacts'])
+      },
+      error:err => {
+        validationHandler(err,this.contactForm)
       }
     })
   }else{
@@ -82,6 +86,8 @@ contactForm!:FormGroup
             this.router.navigate(['/contacts'])
           }
         })
+      },error:err => {
+        validationHandler(err,this.contactForm)
       }
     })}
   }

@@ -12,13 +12,13 @@
         <li *ngIf="hasRoles(['ROLE_ADMIN'])" class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="/register">Create User</a>
         </li>
-        <li *ngIf="isLoggedIn()" class="nav-item">
-          <a class="nav-link" (click)="logout()">Logout</a>
-        </li>
+
         <li *ngIf="isLoggedIn()" class="nav-item">
           <a class="nav-link" routerLink="/contact-form">New Contact</a>
         </li>
-
+        <li *ngIf="isLoggedIn()" class="nav-item">
+          <a class="nav-link" (click)="logout()">Logout</a>
+        </li>
 
       </ul>
     </div>
